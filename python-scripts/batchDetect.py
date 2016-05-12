@@ -35,8 +35,8 @@ MODEL_FILE = 'TVG_CRFRNN_new_deploy.prototxt'
 PRETRAINED = 'TVG_CRFRNN_COCO_VOC.caffemodel'
 IMAGE_FILE = 'input.jpg'
 
-if len(sys.argv) != 4:
-    print("How to use : python batchDetect.py folder imageNamePrefix numberOfImages")
+if len(sys.argv) != 5:
+    print("How to use : python batchDetect.py folder imageNamePrefix fromIndex toIndex")
     sys.exit()
 
 #caffe.set_mode_gpu()
@@ -44,8 +44,9 @@ if len(sys.argv) != 4:
 net = caffe.Segmenter(MODEL_FILE, PRETRAINED)
 
 
-numberOfImages = int(sys.argv[3])
-for i in range(0,numberOfImages):
+fromIndex = int(sys.argv[3])
+toIndex = int(sys.argv[4])
+for i in range(fromIndex,toIndex+1):
     processing = "./" + sys.argv[1] + "/" + sys.argv[2] + str(i).zfill(4) + ".jpg"
     print processing;
 
