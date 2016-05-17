@@ -90,9 +90,9 @@ pad_w = 500 - cur_w
 im = np.pad(im, pad_width=((0, pad_h), (0, pad_w), (0, 0)), mode = 'constant', constant_values = 0)
 # Get predictions
 segmentation = net.predict([im])
+print(str(cur_h) + " " + str(cur_w))
 segmentation2 = segmentation[0:cur_h, 0:cur_w]
+print(segmentation2.shape)
 output_im = PILImage.fromarray(segmentation2)
 output_im.putpalette(pallete)
-
-plt.imshow(output_im)
-plt.savefig('output.png')
+output_im.save("output.png")

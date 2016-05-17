@@ -112,7 +112,4 @@ for i in range(fromIndex,toIndex+1):
     segmentation2 = segmentation[0:cur_h, 0:cur_w]
     output_im = PILImage.fromarray(segmentation2)
     output_im.putpalette(pallete)
-
-    plt.imshow(output_im)
-    plt.axis('off')
-    plt.savefig('./' + sys.argv[1] + '/detected' + str(i).zfill(4) + '.png')
+    output_im.save('./' + sys.argv[1] + '/detected' + str(i).zfill(4) + '.png')
